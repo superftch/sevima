@@ -178,6 +178,7 @@
     crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 <script>
+    var idnow;
     function init() {
         $.ajax({
             url: "/api/vaksin/detail/" + $('#idusr').val(),
@@ -217,7 +218,6 @@
         $('#kelompok').on('change', function () {
             $('#buttonsubmit').removeClass('disabled')
         });
-        var idnow;
         toastr.options = {
             "closeButton": true,
         }
@@ -237,7 +237,7 @@
         });
         $('#button-delete').click(function () {
             $.ajax({
-                url: "/api/buku/delete/" + idnow,
+                url: "/api/vaksin/delete/" + idnow,
                 dataType: "json",
                 success: function (html) {
                     toastr["success"](html.success, "Success")

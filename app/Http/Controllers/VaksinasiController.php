@@ -70,6 +70,7 @@ class VaksinasiController extends Controller
             $data = DB::table('vaksinasis')
             ->leftJoin('users', 'vaksinasis.user_id', '=', 'users.id')
             ->where('user_id',$id)
+            ->select('vaksinasis.id AS idvaksin')
             ->select('*')
             ->get();
             return response()->json(['data' => $data]);
