@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use App\Vaksinasi;
+use App\Models\Province;
+use App\Models\Regency;
+use App\Models\District;
+use App\Models\Village;
 use Illuminate\Validation\Rule;
 use Validator;
 use Auth;
@@ -96,5 +100,25 @@ class VaksinasiController extends Controller
         Vaksinasi::whereId($request->idnow)->update($form_data);
 
         return response()->json(['success' => 'Data Vaksinasi berhasil diubah.']);
+    }
+    public function getprovinsi()
+    {
+        $provinces = Province::all();
+        return response()->json(['data' => $provinces]);
+    }
+    public function getkota($id)
+    {
+        $regencies = Provice::where('id',$id)->regencies;
+        return response()->json(['data' => $regencies]);
+    }
+    public function getkecamatan($id)
+    {
+        $districts = Regency::where('id',$id)->districts;
+        return response()->json(['data' => $districts]);
+    }
+    public function getkelurahan($id)
+    {
+        $villages = District::where('id',$id)->villages;
+        return response()->json(['data' => $villages]);
     }
 }

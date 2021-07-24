@@ -94,15 +94,15 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label class="col-form-label">NIK</label>
-                        <input type="text" class="form-control" id="no-buku">
+                        <input type="text" class="form-control" id="nik">
                     </div>
                     <div class="form-group">
                         <label class="col-form-label">Alamat</label>
-                        <textarea class="form-control" name="alamat" id="" rows="2"></textarea>
+                        <textarea class="form-control" name="alamat" id="alamat" rows="2"></textarea>
                     </div>
                     <div class="form-group">
                         <label class="col-form-label">Provinsi:</label>
-                        <input type="text" class="form-control" id="pengarang">
+                        <input type="text" class="form-control" id="provvi">
                     </div>
                     <div class="form-group">
                         <label class="col-form-label">Kota:</label>
