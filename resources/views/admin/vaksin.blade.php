@@ -103,7 +103,7 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label class="col-form-label">NIK</label>
-                        <input type="text" class="form-control" id="nik">
+                        <input type="text" class="form-control" id="nikinput">
                     </div>
                     <div class="form-group">
                         <label class="col-form-label">Alamat</label>
@@ -197,7 +197,7 @@
                 $('#tkelompok').text(data.data[0].kelompok);
                 $('#tablevaksin').removeClass('d-none');
                 $('#nama').val(data.data[0].name);
-                $('#nik').val($('#tnik').text());
+                $('#nikinput').val(data.data[0].nik);
                 $('#alamat').text(data.data[0].alamat);
                 $('#kelurahan').val(data.data[0].kelurahan);
                 $('#kecamatan').val(data.data[0].kecamatan);
@@ -231,7 +231,7 @@
         $('#button-edit').click(function () {
             // $('#button-delete').addClass('d-none');
             $('#action').val('create');
-            $('#formvaksin')[0].reset();
+            // $('#formvaksin')[0].reset();
             // $('#button-delete').addClass('d-none');
             $('#modal-vaksin').modal('show');
         });
@@ -254,7 +254,7 @@
 
         $('#buttonsubmit').on("click", function () {
             var formData = new FormData();
-            formData.append('nik', $('#nik').val());
+            formData.append('nik', $('#nikinput').val());
             formData.append('alamat', $('#alamat').val());
             formData.append('provinsi', $('#provinsi').val());
             formData.append('kota', $('#kota').val());
