@@ -16,6 +16,16 @@ use DB;
 
 class VaksinasiController extends Controller
 {
+    public function index()
+    {
+        $iduser = Auth::id();
+        $idv = Vaksinasi::where('user_id',$iduser)->get('id');
+        if ($idv == '') {
+            $idv = 0;
+        }
+        // return response()->json(['success' => $iduser]);
+        return view('admin/vaksin')->with('idv',$idv);
+    }
     public function tambah(Request $request)
     {
         $rules = array(
@@ -56,7 +66,12 @@ class VaksinasiController extends Controller
     {
         if(request()->ajax())
         {
-            $data = Vaksinasi::findOrFail($id);
+            // $data = Vaksinasi::findOrFail($id);
+            $data = DB::table('vaksinasis')
+            ->leftJoin('users', 'vaksinasis.user_id', '=', 'users.id')
+            ->where('user_id',$id)
+            ->select('*')
+            ->get();
             return response()->json(['data' => $data]);
         }
     } 
@@ -103,7 +118,7 @@ class VaksinasiController extends Controller
     }
     public function getprovinsi()
     {
-        $provinces = Province::all();
+        $provinces = Province::select('*')->get();
         return response()->json(['data' => $provinces]);
     }
     public function getkota($id)
