@@ -18,5 +18,6 @@ Route::get('/', function () {
 });
 Route::view('/dashboard', 'dashboard');
 Auth::routes();
+Route::view('/home', 'admin.vaksin');
 
-Route::get('/home', 'HomeController@index')->name('home');
+// Route::get('/home', 'HomeController@index')->name('home');
